@@ -9,6 +9,6 @@
 /dev/block/platform/msm_sdcc.1/by-name/system         /system      ext4    ro,barrier=1                                wait
 /dev/block/platform/msm_sdcc.1/by-name/userdata       /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc      wait,check,encryptable=footer
 # begin by SoMC, sdcard workaround: failed to mount the internal emmc card by vold so we use /data/media as an emulated sdcard
-#/devices/platform/msm_sdcc.1/mmc_host                  auto        auto    nosuid,nodev                                voldmanaged=sdcard0:auto
+/devices/platform/msm_sdcc.1/mmc_host                  auto        auto    nosuid,nodev                                voldmanaged=sdcard0:auto,noemulatedsd
 # end by SoMC
 /devices/platform/msm_sdcc.3/mmc_host                  auto        auto    nosuid,nodev                                voldmanaged=sdcard1:auto
