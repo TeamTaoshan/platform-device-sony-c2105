@@ -21,7 +21,6 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 # Include others
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product, device/sony/c2105/c2105-copy.mk)
 $(call inherit-product, vendor/sony/c2105/c2105-vendor.mk)
 $(call inherit-product-if-exists, vendor/google/products/gms.mk)
 
@@ -70,6 +69,29 @@ PRODUCT_PACKAGES += \
     SyncProvider \
     Updater \
 
+#sony thinks too much
+PRODUCT_COPY_FILES += \
+    device/sony/c2105/rootdir/root/init.sony.rc:root/init.sony.rc \
+    device/sony/c2105/rootdir/root/logo.rle:root/logo.rle \
+    device/sony/c2105/rootdir/root/fstab.sony:root/fstab.sony \
+    device/sony/c2105/rootdir/root/ueventd.sony.rc:root/ueventd.sony.rc \
+    device/sony/c2105/rootdir/root/init.sony.usb.rc:root/init.sony.usb.rc \
+    device/sony/c2105/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/sony/c2105/rootdir/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/sony/c2105/rootdir/system/etc/gps.conf:system/etc/gps.conf \
+    device/sony/c2105/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/sony/c2105/rootdir/system/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
+    device/sony/c2105/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    device/sony/c2105/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
+    device/sony/c2105/rootdir/system/etc/vold.fstab:system/etc/vold.fstab \
+    device/sony/c2105/rootdir/system/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
+    device/sony/c2105/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/cyttsp3-i2c.kl:system/usr/keylayout/cyttsp3-i2c.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/msm8930-sitar-snd-card_Button_Jack.kl:system/usr/keylayout/msm8930-sitar-snd-card_Button_Jack.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/keypad_8960.kl:system/usr/keylayout/keypad_8960.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/simple_remote_appkey.kl:system/usr/keylayout/simple_remote_appkey.kl \
+    device/sony/c2105/rootdir/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+    
 # Copy extra files
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
