@@ -61,3 +61,7 @@ ro.bluetooth.remote.autoconnect=true
 ro.gps.agps_provider=customized
 #system prop for switching gps driver to qmi
 persist.gps.qmienabled=true
+
+##test for sleep issues
+ro.ril.disable.power.collapse=1
+pm.sleep_mode=1

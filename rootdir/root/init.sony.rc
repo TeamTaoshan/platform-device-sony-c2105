@@ -29,21 +29,32 @@ on early-init
 
 
 
-
 on init
     mkdir /persist 0771 system system
 
-    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /mnt/shell/emulated 0775 shell shell
+    mkdir /mnt/shell/emulated/0 0775 root system
     mkdir /storage/emulated 0555 root root
 
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+
+    mkdir /storage/sdcard0 0700 root root
     mkdir /storage/sdcard1 0700 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EXTERNAL_STORAGE /storage/emulated/legacy 
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
     export SECONDARY_STORAGE /storage/sdcard1
 
+# for backwards compatibility
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+    symlink /storage/sdcard1 /ext_card
+    symlink /storage/sdcard1 /mnt/ext_card
+    
 
 
 
@@ -89,6 +100,8 @@ on fs
     exec /sbin/wait4tad_static
     exec /sbin/fota-ua c
     exec /system/bin/taimport
+
+    start ta_qmi_service
 
 
 
@@ -395,11 +408,7 @@ on property:init.svc.wpa_supplicant=stopped
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    disabled
 
-on property:ro.boot.emmc=true
-    start rmt_storage
-    start ta_qmi_service
 
 service qmuxd /system/bin/qmuxd
     class main
@@ -514,13 +523,14 @@ on property:ro.data.large_tcp_window_size=true
 
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
+    disabled
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 
-on property:ro.fuse_sdcard=true
-    start sdcard
+#on property:ro.fuse_sdcard=true
+#    start sdcard
 
 service charger /charger
     class charger
