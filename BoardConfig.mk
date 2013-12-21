@@ -55,6 +55,10 @@ USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/sony/c2105/egl.cfg
 ENABLE_WEBGL := true
 
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+
+
 # audio is enabled
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := true
