@@ -83,7 +83,6 @@ PRODUCT_COPY_FILES += \
     device/sony/c2105/rootdir/system/etc/snd_soc_msm/snd_soc_msm_Sitar:system/etc/snd_soc_msm/snd_soc_msm_Sitar \
     device/sony/c2105/rootdir/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
     device/sony/c2105/rootdir/system/etc/thermald.conf:system/etc/thermald.conf \
-    device/sony/c2105/rootdir/system/etc/vold.fstab:system/etc/vold.fstab \
     device/sony/c2105/rootdir/system/usr/keychars/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm \
     device/sony/c2105/rootdir/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     device/sony/c2105/rootdir/system/usr/keylayout/cyttsp3-i2c.kl:system/usr/keylayout/cyttsp3-i2c.kl \
